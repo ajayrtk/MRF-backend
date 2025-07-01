@@ -19,7 +19,6 @@ def get_booking(exp_id: int):
     try:
         booking = fetch_booking_by_id(exp_id)
 
-        
         if booking is None:
             raise HTTPException(status_code=404, detail="Booking not found")
         return booking
