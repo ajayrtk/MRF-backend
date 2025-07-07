@@ -1,114 +1,175 @@
-# Booking API - FastAPI + SQLite + Docker
+# 🚀 Booking API (FastAPI + SQLite)
 
-This is a production-ready FastAPI backend that serves booking data from an existing SQLite database (`MRF_db.db`). The API includes endpoints to fetch all bookings or a single booking by `exp_id`. The service is containerized using Docker for easy deployment.
+This is a simple FastAPI-based REST API to fetch booking data from an SQLite database.
 
 ---
 
 ## 📁 Project Structure
 
-.
-├── app
-│ ├── main.py # FastAPI routes
-│ ├── models.py # DB query logic
-│ ├── database.py # SQLite connection
-├── sqllite-db
-│ └── MRF_db.db # SQLite database (with booking_data table)
+MRF-BACKEND/
+├── app/
+│ ├── main.py # FastAPI application
+│ ├── models.py # Database logic
+│ └── database.py # SQLite connection
+├── sqllite-db/
+│ └── MRF_db.db # Your SQLite database
 ├── requirements.txt # Python dependencies
-├── Dockerfile # Docker setup
-└── README.txt # This file
+├── Dockerfile # Docker config
+└── README.md # You're here
 
-yaml
-Copy
-Edit
 
 ---
 
-## 🛠️ Requirements
+## 🧪 Running Locally
 
-- Docker
-- (Optional for development) Python 3.8+
+### 1. 📦 Install Python dependencies
+
+> Recommended: use a virtual environment
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+
+2. ▶️ Run the FastAPI server
+uvicorn app.main:app --reload
+
+API: http://127.0.0.1:8000/
+
+Docs: http://127.0.0.1:8000/docs
+
+
+
+
+Sure! Here's a complete `README.md` file you can place in your project root to document **how to run your FastAPI app locally and via Docker**.
 
 ---
 
-## ▶️ How to Run with Docker
+## 📘 README.md
 
-1. **Build the Docker image:**
+```markdown
+# 🚀 Booking API (FastAPI + SQLite)
+
+This is a simple FastAPI-based REST API to fetch booking data from an SQLite database.
+
+---
+
+## 📁 Project Structure
+
+```
+
+your-project/
+├── app/
+│   ├── main.py         # FastAPI application
+│   ├── models.py       # Database logic
+│   └── database.py     # SQLite connection
+├── sqllite-db/
+│   └── MRF\_db.db       # Your SQLite database
+├── requirements.txt    # Python dependencies
+├── Dockerfile          # Docker config
+└── README.md           # You're here
+
+````
+
+---
+
+## 🧪 Running Locally
+
+### 1. 📦 Install Python dependencies
+
+> Recommended: use a virtual environment
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+````
+
+### 2. ▶️ Run the FastAPI server
+
+```bash
+uvicorn app.main:app --reload
+```
+
+* API: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+* Docs: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
+---
+
+## 🐳 Running with Docker
+
+### 1. 🏗️ Build the Docker image
 
 ```bash
 docker build -t booking-api .
-Run the container:
+```
 
-bash
-Copy
-Edit
+### 2. 🚀 Run the container
+
+```bash
 docker run -d -p 8000:8000 --name booking-api-container booking-api
-Access the API:
+```
 
-All bookings:
-http://localhost:8000/bookings
+* Now open: [http://localhost:8000](http://localhost:8000)
 
-Single booking by exp_id:
-http://localhost:8000/bookings/1
+### 3. 📋 Show running containers
 
-🗃️ Database Assumptions
-Your SQLite database should exist at ./sqllite-db/MRF_db.db and contain a table named booking_data.
+```bash
+docker ps
+```
 
-Example schema (assumed):
-sql
-Copy
-Edit
-CREATE TABLE booking_data (
-    exp_id INTEGER PRIMARY KEY,
-    customer_name TEXT,
-    booking_date TEXT,
-    service TEXT,
-    price REAL
-);
-Any NULL values in the DB will be returned as empty strings ("") in the JSON output.
+### 4. 🛑 Stop the container
 
-🔧 Local Development (Optional)
-You can also run the app locally:
+```bash
+docker stop booking-api-container
+```
 
-bash
-Copy
-Edit
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-📦 Useful Docker Tips
-To rebuild the image after changes:
+### 5. ❌ Remove the container
 
-bash
-Copy
-Edit
-docker build --no-cache -t booking-api .
-To stop and remove the container:
+```bash
+docker rm booking-api-container
+```
 
-bash
-Copy
-Edit
-docker stop booking-api-container && docker rm booking-api-container
-To persist and edit the DB outside the container:
+---
 
-bash
-Copy
-Edit
-docker run -d -p 8000:8000 \
-  -v $(pwd)/sqllite-db:/app/sqllite-db \
-  --name booking-api-container booking-api
-✅ API Response Format
-All responses are returned in valid JSON format.
+## ✅ API Endpoints
 
-Example:
-json
-Copy
-Edit
-{
-  "exp_id": 1,
-  "customer_name": "John Doe",
-  "booking_date": "2025-07-01",
-  "service": "Massage",
-  "price": 150.00
-}
-License
-This project is open-source and free to use.
+| Method | Endpoint                 | Description                    |
+| ------ | ------------------------ | ------------------------------ |
+| GET    | `/`                      | Root endpoint (health check)   |
+| GET    | `/bookings`              | Returns all booking records    |
+| GET    | `/bookings/{session_id}` | Returns bookings by session ID |
 
+---
+
+## ⚠️ Notes
+
+* Make sure the SQLite database file (`MRF_db.db`) exists under `sqllite-db/`.
+* If using Docker, verify the path is correct in the `Dockerfile`.
+
+---
+
+## 📦 Dependencies
+
+* FastAPI
+* Uvicorn
+* SQLite (built-in with Python)
+
+Install them manually if needed:
+
+```bash
+pip install fastapi uvicorn
+```
+
+---
+
+## 📃 License
+
+MIT License. Use freely!
+
+```
+
+---
+
+Let me know if you want this in `.docx`, HTML, or need a `docker-compose.yml` setup too.
+```
