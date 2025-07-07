@@ -89,14 +89,14 @@ docker rm booking-api-container
 
 ---
 
-## ⚠️ Notes
+## Notes
 
 * Make sure the SQLite database file (`MRF_db.db`) exists under `sqllite-db/`.
 * If using Docker, verify the path is correct in the `Dockerfile`.
 
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 * FastAPI
 * Uvicorn
