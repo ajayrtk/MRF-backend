@@ -1,10 +1,10 @@
-# 🚀 Booking API (FastAPI + SQLite)
+# Booking API (FastAPI + SQLite)
 
 This is a simple FastAPI-based REST API to fetch booking data from an SQLite database.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 MRF-BACKEND/
 ├── app/
@@ -20,72 +20,19 @@ MRF-BACKEND/
 
 ---
 
-## 🧪 Running Locally
+## Running Locally
 
-### 1. 📦 Install Python dependencies
-
-> Recommended: use a virtual environment
-
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-
-2. ▶️ Run the FastAPI server
-uvicorn app.main:app --reload
-
-API: http://127.0.0.1:8000/
-
-Docs: http://127.0.0.1:8000/docs
-
-
-
-
-Sure! Here's a complete `README.md` file you can place in your project root to document **how to run your FastAPI app locally and via Docker**.
-
----
-
-## 📘 README.md
-
-```markdown
-# 🚀 Booking API (FastAPI + SQLite)
-
-This is a simple FastAPI-based REST API to fetch booking data from an SQLite database.
-
----
-
-## 📁 Project Structure
-
-```
-
-your-project/
-├── app/
-│   ├── main.py         # FastAPI application
-│   ├── models.py       # Database logic
-│   └── database.py     # SQLite connection
-├── sqllite-db/
-│   └── MRF\_db.db       # Your SQLite database
-├── requirements.txt    # Python dependencies
-├── Dockerfile          # Docker config
-└── README.md           # You're here
-
-````
-
----
-
-## 🧪 Running Locally
-
-### 1. 📦 Install Python dependencies
+### 1. Install Python dependencies
 
 > Recommended: use a virtual environment
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate
 pip install -r requirements.txt
-````
 
-### 2. ▶️ Run the FastAPI server
+
+### 2. Run the FastAPI server 
 
 ```bash
 uvicorn app.main:app --reload
@@ -96,15 +43,15 @@ uvicorn app.main:app --reload
 
 ---
 
-## 🐳 Running with Docker
+## Running with Docker
 
-### 1. 🏗️ Build the Docker image
+### 1. Build the Docker image
 
 ```bash
 docker build -t booking-api .
 ```
 
-### 2. 🚀 Run the container
+### 2. Run the container
 
 ```bash
 docker run -d -p 8000:8000 --name booking-api-container booking-api
@@ -112,19 +59,19 @@ docker run -d -p 8000:8000 --name booking-api-container booking-api
 
 * Now open: [http://localhost:8000](http://localhost:8000)
 
-### 3. 📋 Show running containers
+### 3. Show running containers
 
 ```bash
 docker ps
 ```
 
-### 4. 🛑 Stop the container
+### 4. Stop the container
 
 ```bash
 docker stop booking-api-container
 ```
 
-### 5. ❌ Remove the container
+### 5. Remove the container
 
 ```bash
 docker rm booking-api-container
@@ -132,7 +79,7 @@ docker rm booking-api-container
 
 ---
 
-## ✅ API Endpoints
+## API Endpoints
 
 | Method | Endpoint                 | Description                    |
 | ------ | ------------------------ | ------------------------------ |
@@ -159,17 +106,4 @@ Install them manually if needed:
 
 ```bash
 pip install fastapi uvicorn
-```
-
----
-
-## 📃 License
-
-MIT License. Use freely!
-
-```
-
----
-
-Let me know if you want this in `.docx`, HTML, or need a `docker-compose.yml` setup too.
 ```
